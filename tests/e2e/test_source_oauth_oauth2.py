@@ -244,11 +244,15 @@ class TestSourceOAuth2(SeleniumTestCase):
 
         self.login_via_oauth_provider()
 
-        post_login_expected_url = self.if_user_url("/settings;page-sources")
+        # The source flow manager still redirects to the legacy hash form
+        # (`/if/user/#/settings;page-sources`). The interface's boot shim rewrites
+        # that at load, decoding the bare tab token into the `page` search
+        # parameter — see `translateHashRoute`. Wait for the translation rather
+        # than reading the URL the server handed the browser.
+        post_login_expected_url = self.if_user_url("/settings?page=page-sources")
 
-        self.assertEqual(
-            self.driver.current_url,
-            post_login_expected_url,
+        WebDriverWait(self.driver, 30).until(
+            ec.url_to_be(post_login_expected_url),
             "Expected to be redirected to user settings after linking OAuth source",
         )
 

@@ -61,12 +61,10 @@ class TestSourceOAuth2(SeleniumTestCase):
         url_after_login = self.driver.current_url
 
         user_settings_url = self.if_user_url("/settings")
-        hash_route = ';%7B"page"%3A"page-' + tab_name + '"%7D'
+        # Tabs are path segments now: `/if/user/settings/<tab>` selects the tab.
+        tab_url = self.if_user_url(f"/settings/{tab_name}")
 
-        self.driver.get(user_settings_url + hash_route)
-
-        # A refresh is required because the hash change doesn't always trigger a reload.
-        self.driver.refresh()
+        self.driver.get(tab_url)
 
         try:
             self.wait.until(ec.url_contains(user_settings_url))
@@ -244,12 +242,11 @@ class TestSourceOAuth2(SeleniumTestCase):
 
         self.login_via_oauth_provider()
 
-        # The source flow manager still redirects to the legacy hash form
-        # (`/if/user/#/settings;page-sources`). The interface's boot shim rewrites
-        # that at load, decoding the bare tab token into the `page` search
-        # parameter — see `translateHashRoute`. Wait for the translation rather
-        # than reading the URL the server handed the browser.
-        post_login_expected_url = self.if_user_url("/settings?page=page-sources")
+        # The source flow manager now redirects straight to the path-segment tab,
+        # so no hash translation is involved. Still waited on rather than read
+        # directly: the redirect chain settles a moment after the OAuth provider
+        # hands control back.
+        post_login_expected_url = self.if_user_url("/settings/sources")
 
         WebDriverWait(self.driver, 30).until(
             ec.url_to_be(post_login_expected_url),

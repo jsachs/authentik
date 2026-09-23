@@ -11723,6 +11723,33 @@ Bindings to groups/users are checked against the user of the event.</source>
 <trans-unit id="sa9f8a401cf399e4b">
   <source>Altered behavior for usage with GitLab.</source>
 </trans-unit>
+<trans-unit id="policies.bindings.dry-run.view-results.label">
+  <source>View dry-run results</source>
+</trans-unit>
+<trans-unit id="policies.bindings.dry-run.description">
+  <source>Evaluate this policy without including its result or messages in the final decision. Results are recorded in the Event Log. Policy side effects are not prevented.</source>
+</trans-unit>
+<trans-unit id="s480085c16f6574fd">
+  <source>Username to authenticate with.</source>
+</trans-unit>
+<trans-unit id="sdc5dbccf72670824">
+  <source>Password to authenticate with.</source>
+</trans-unit>
+<trans-unit id="sed2d45e3f811c81d">
+  <source>Basic</source>
+</trans-unit>
+<trans-unit id="sde5560a5466240ce">
+  <source>Authenticate SCIM requests using HTTP Basic authentication.</source>
+</trans-unit>
+<trans-unit id="policies.bindings.dry-run.label">
+  <source>Dry-run</source>
+</trans-unit>
+<trans-unit id="events.policy-execution.raw-result.label">
+  <source>Raw result</source>
+</trans-unit>
+<trans-unit id="events.policy-execution.cached.label">
+  <source>Cached</source>
+</trans-unit>
 </body>
 </file>
 </xliff>

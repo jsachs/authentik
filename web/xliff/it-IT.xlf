@@ -12083,6 +12083,21 @@ Bindings to groups/users are checked against the user of the event.</source>
 <trans-unit id="pagination.nav.aria-label">
   <source>Pagination</source>
 </trans-unit>
+<trans-unit id="policies.bindings.dry-run.view-results.label">
+  <source>View dry-run results</source>
+</trans-unit>
+<trans-unit id="policies.bindings.dry-run.description">
+  <source>Evaluate this binding without including its result or messages in the final decision. Results are recorded in the Event Log. Policy side effects are not prevented.</source>
+</trans-unit>
+<trans-unit id="policies.bindings.dry-run.label">
+  <source>Dry-run</source>
+</trans-unit>
+<trans-unit id="events.policy-execution.raw-result.label">
+  <source>Raw result</source>
+</trans-unit>
+<trans-unit id="events.policy-execution.cached.label">
+  <source>Cached</source>
+</trans-unit>
 </body>
 </file>
 </xliff>
